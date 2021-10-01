@@ -8,10 +8,8 @@
 
 GitHub CLI extension to help maintainers set up repo for Hacktoberfest, e.g. adding `hacktoberfest` topic and labels to a repo.
 
-## Prerequisites
+## Contributing to gh-hf
 
-## Contributing to <project_name>
-<!--- If your README is long or you have some specific process or steps you want contributors to follow, consider creating a separate CONTRIBUTING.md file--->
 To contribute to <project_name>, follow these steps:
 
 1. Fork this repository.
