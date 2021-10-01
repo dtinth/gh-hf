@@ -8,7 +8,8 @@ show_help() {
   echo
   echo "Commands:"
   echo "  enable"
-  echo "    Add 'hacktoberfest' to repo topic and create the label 'hacktoberfest'."
+  echo "    Add 'hacktoberfest' to repo topic and create the label 'hacktoberfest'"
+  echo "    on the current repository."
 }
 
 case "$COMMAND" in
