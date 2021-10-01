@@ -1,35 +1,27 @@
 #!/bin/bash
 set -e
 
-echo "Hello gh-hf!"
+COMMAND="$1"
 
-# Snippets to help get started:
+show_help() {
+  echo "Usage: gh hf <command>"
+  echo
+  echo "Commands:"
+  echo "  enable"
+  echo "    Add 'hacktoberfest' to repo topic and create the label 'hacktoberfest'."
+}
 
-# Determine if an executable is in the PATH
-# if ! type -p ruby >/dev/null; then
-#   echo "Ruby not found on the system" >&2
-#   exit 1
-# fi
+case "$COMMAND" in
+  "enable")
+    echo '>> Updating repository topics...'
+    gh api '/repos/{owner}/{repo}/topics' --preview=mercy --jq='.names = (.names + ["hacktoberfest"] | unique)' \
+      | gh api -X PUT '/repos/{owner}/{repo}/topics' --preview=mercy --input=-
 
-# Pass arguments through to another command
-# gh issue list "$@" -R cli/cli
-
-# Using the gh api command to retrieve and format information
-# QUERY='
-#   query($endCursor: String) {
-#     viewer {
-#       repositories(first: 100, after: $endCursor) {
-#         nodes {
-#           nameWithOwner
-#           stargazerCount
-#         }
-#       }
-#     }
-#   }
-# '
-# TEMPLATE='
-#   {{- range $repo := .data.viewer.repositories.nodes -}}
-#     {{- printf "name: %s - stargazers: %v\n" $repo.nameWithOwner $repo.stargazerCount -}}
-#   {{- end -}}
-# '
-# exec gh api graphql -f query="${QUERY}" --paginate --template="${TEMPLATE}"
+    echo '>> Updating repository labels...'
+    gh api '/repos/{owner}/{repo}/labels/hacktoberfest' \
+      || (echo '{"name":"hacktoberfest","color":"f74700"}' | gh api -X POST '/repos/{owner}/{repo}/labels' --input=-)
+    ;;
+  *)
+    show_help
+    ;;
+esac
