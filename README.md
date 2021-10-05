@@ -6,7 +6,19 @@
 ![GitHub stars](https://img.shields.io/github/stars/dtinth/gh-hf)
 ![GitHub forks](https://img.shields.io/github/forks/dtinth/gh-hf)
 
-GitHub CLI extension to help maintainers set up repo for Hacktoberfest, e.g. adding `hacktoberfest` topic and labels to a repo.
+A [GitHub CLI](https://cli.github.com) extension to help maintainers set up repo for Hacktoberfest, e.g. adding `hacktoberfest` topic and label to a repo.
+
+## Installation
+
+```shell
+gh extension install dtinth/gh-hf
+```
+
+## Usage
+
+```shell
+gh hf enable
+```
 
 ## Contributing to gh-hf
 
