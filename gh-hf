@@ -21,6 +21,8 @@ case "$COMMAND" in
     echo '>> Updating repository labels...'
     gh api '/repos/{owner}/{repo}/labels/hacktoberfest' \
       || (echo '{"name":"hacktoberfest","color":"f74700"}' | gh api -X POST '/repos/{owner}/{repo}/labels' --input=-)
+    gh api '/repos/{owner}/{repo}/labels/up-for-grabs' \
+      || (echo '{"name":"up-for-grabs","color":"009800"}' | gh api -X POST '/repos/{owner}/{repo}/labels' --input=-)
     ;;
   *)
     show_help
