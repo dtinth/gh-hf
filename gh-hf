@@ -19,9 +19,9 @@ case "$COMMAND" in
       | gh api -X PUT '/repos/{owner}/{repo}/topics' --preview=mercy --input=-
 
     echo '>> Updating repository labels...'
-    gh api '/repos/{owner}/{repo}/labels/hacktoberfest' \
+    gh api '/repos/{owner}/{repo}/labels/hacktoberfest' >/dev/null 2>&1 \
       || (echo '{"name":"hacktoberfest","color":"f74700"}' | gh api -X POST '/repos/{owner}/{repo}/labels' --input=-)
-    gh api '/repos/{owner}/{repo}/labels/up-for-grabs' \
+    gh api '/repos/{owner}/{repo}/labels/up-for-grabs' >/dev/null 2>&1 \
       || (echo '{"name":"up-for-grabs","color":"009800"}' | gh api -X POST '/repos/{owner}/{repo}/labels' --input=-)
     ;;
   *)
