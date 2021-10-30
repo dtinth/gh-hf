@@ -1,12 +1,13 @@
 # gh-hf
 
 <!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
+
 ![GitHub repo size](https://img.shields.io/github/repo-size/dtinth/gh-hf)
 ![GitHub contributors](https://img.shields.io/github/contributors/dtinth/gh-hf)
 ![GitHub stars](https://img.shields.io/github/stars/dtinth/gh-hf)
 ![GitHub forks](https://img.shields.io/github/forks/dtinth/gh-hf)
 
-A [GitHub CLI](https://cli.github.com) extension to help maintainers set up repo for Hacktoberfest, e.g. adding `hacktoberfest` topic and label to a repo.
+A [GitHub CLI](https://cli.github.com) extension to help maintainers set up repo for Hacktoberfest, e.g. adding `hacktoberfest` topic and labels to a repo.
 
 ## Installation
 

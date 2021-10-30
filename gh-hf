@@ -8,8 +8,8 @@ show_help() {
   echo
   echo "Commands:"
   echo "  enable"
-  echo "    Add 'hacktoberfest' to repo topic and create the following labels"
-  echo "    on the current repository: 'hacktoberfest', 'up-for-grabs'."
+  echo "    - Add 'hacktoberfest' to repo topic"
+  echo "    - Create the following labels on the current repository: 'hacktoberfest', 'hacktoberfest-accepted', 'up-for-grabs'."
 }
 
 case "$COMMAND" in
@@ -20,9 +20,14 @@ case "$COMMAND" in
 
     echo '>> Updating repository labels...'
     gh api '/repos/{owner}/{repo}/labels/hacktoberfest' >/dev/null 2>&1 \
-      || (echo '{"name":"hacktoberfest","color":"f74700"}' | gh api -X POST '/repos/{owner}/{repo}/labels' --input=-)
+      || (echo '{"name":"hacktoberfest","color":"f74700","description":"Hacktoberfest event"}' \
+      | gh api -X POST '/repos/{owner}/{repo}/labels' --input=-)
+    gh api '/repos/{owner}/{repo}/labels/hacktoberfest-accepted' >/dev/null 2>&1 \
+      || (echo '{"name":"hacktoberfest-accepted","color":"006b75","description":"Accepted for Hacktoberfest event"}' \
+      | gh api -X POST '/repos/{owner}/{repo}/labels' --input=-)
     gh api '/repos/{owner}/{repo}/labels/up-for-grabs' >/dev/null 2>&1 \
-      || (echo '{"name":"up-for-grabs","color":"009800"}' | gh api -X POST '/repos/{owner}/{repo}/labels' --input=-)
+      || (echo '{"name":"up-for-grabs","color":"009800","description":"Up for grabs"}' \
+      | gh api -X POST '/repos/{owner}/{repo}/labels' --input=-)
     ;;
   *)
     show_help
