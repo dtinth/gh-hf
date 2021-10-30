@@ -26,7 +26,7 @@ case "$COMMAND" in
       || (echo '{"name":"hacktoberfest-accepted","color":"006b75","description":"Accepted for Hacktoberfest event"}' \
       | gh api -X POST '/repos/{owner}/{repo}/labels' --input=-)
     gh api '/repos/{owner}/{repo}/labels/up-for-grabs' >/dev/null 2>&1 \
-      || (echo '{"name":"up-for-grabs","color":"009800","description":"Up gor grabs"}' \
+      || (echo '{"name":"up-for-grabs","color":"009800","description":"Up for grabs"}' \
       | gh api -X POST '/repos/{owner}/{repo}/labels' --input=-)
     ;;
   *)
